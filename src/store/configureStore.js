@@ -1,12 +1,14 @@
 import { createStore, combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux'
 
-import counterReducer from '../reducers/counterReducer';
+import * as reducers from '../reducers'
 
 const rootReducer = combineReducers({
-    counterReducer
+    ...reducers,
+    routing: routerReducer
 })
 
 export default createStore(
-    rootReducer, 
+    rootReducer,
     window.devToolsExtension ? window.devToolsExtension() : undefined
 );
