@@ -14,15 +14,10 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
-// const DevTools = createDevTools(
-//   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
-//     <LogMonitor theme="tomorrow" preserveScrollTop={false} />
-//   </DockMonitor>
-// )
-
 const store = createStore(
   reducer
 )
+
 const history = syncHistoryWithStore(browserHistory, store)
 
 ReactDOM.render(
@@ -39,19 +34,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
-
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-
-// import { Provider } from 'react-redux';
-
-// import Panel from './containers/Panel';
-
-// import configureStore from './store/configureStore';
-
-// ReactDOM.render(
-//   <Provider store={configureStore}>
-//       <Panel />
-//   </Provider>
-//   , document.getElementById('root'));
