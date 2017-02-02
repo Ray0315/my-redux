@@ -12,6 +12,12 @@ export default function App({ children }) {
         <Link to="/foo">Foo</Link>
         {' '}
         <Link to="/bar">Bar</Link>
+        {' '}
+        <Link to="/menu">Menu</Link>
+        {' '}
+        <Link to="/test">Test</Link>
+        {' '}
+        <Link to="/ajax">Ajax</Link>
       </header>
       <div>
         <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
