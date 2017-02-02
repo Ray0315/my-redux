@@ -39,6 +39,9 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 import Routes from './routing'
 
+configureStore.subscribe(() => {
+  console.log("store changed", configureStore.getState());
+})
 
 ReactDOM.render(
   <Provider store={configureStore}>
