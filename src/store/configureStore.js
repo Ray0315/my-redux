@@ -22,8 +22,6 @@ const logger = store => next => action => {
   next(action);
 }
 
-
-
 // 將所有refucers做combine,包含routing的部分
 const rootReducer = combineReducers({
     ...reducers,
