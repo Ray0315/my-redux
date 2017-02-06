@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, browserHistory } from 'react-router'
 
-export default function App({ children }) {
+export default function AppComponent({ children }) {
   return (
     <div>
       <header>

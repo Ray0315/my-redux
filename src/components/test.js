@@ -1,6 +1,7 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
 import Panel from '../containers/Panel';
+import Button from './Button'
 
 export default class Menu extends Component {
     // static propTypes = {}
@@ -17,8 +18,13 @@ export default class Menu extends Component {
                     <img src={require("../assets/images/lOL8wD5.png")} alt="qq"
                         style={{ "height": "120px" }}></img>
                 </div>
-
+                <Button
+                    size="large"
+                    block={false}>
+                    Cool Button!
+                </Button>
             </div>
         );
     }
 }
+
