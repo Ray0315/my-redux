@@ -18,6 +18,8 @@ export default function App({ children }) {
         <Link to="/test">Test</Link>
         {' '}
         <Link to="/ajax">Ajax</Link>
+        {' '}
+        <Link to="/userInfo">UserInfo</Link>
       </header>
       <div>
         <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>

@@ -13,6 +13,11 @@ export default class Menu extends Component {
             <div>
                 <h1>Test</h1>
                 <Panel />
+                <div style={{ background: 'antiquewhite' }}>
+                    <img src={require("../assets/images/lOL8wD5.png")} alt="qq"
+                        style={{ "height": "120px" }}></img>
+                </div>
+
             </div>
         );
     }
