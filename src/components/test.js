@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Panel from '../containers/Panel';
 import Button from './Button'
+import Main from './layouts/main'
 
 export default class Menu extends Component {
     // static propTypes = {}
@@ -23,6 +24,7 @@ export default class Menu extends Component {
                     block={false}>
                     Cool Button!
                 </Button>
+                <Main qq="00000" tt="Ray"/>
             </div>
         );
     }
