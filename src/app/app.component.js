@@ -7,7 +7,7 @@ export default function AppComponent({ children }) {
       <header>
         Links:
         {' '}
-        <Link to="/">Home</Link>
+        <Link to="/">Home2</Link>
         {' '}
         <Link to="/foo">Foo</Link>
         {' '}
