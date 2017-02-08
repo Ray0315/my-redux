@@ -4,7 +4,7 @@ import { increase, decrease } from '../actions/count'
 
 function Home({ number, increase, decrease }) {
   return (
-    <div>
+    <div style={{ marginTop: '1.5em' }}>
       Some state changes:
       {number}
       <button onClick={() => increase(1)}>Increase</button>

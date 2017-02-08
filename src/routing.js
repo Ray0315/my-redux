@@ -4,14 +4,16 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './store/configureStore'
 import { AppComponent, Home, Foo, Bar, Menu, Test, Ajax } from './components'
+import Main from './components/layouts/main'
 import UserInfo from './containers/UserInfo';
 
 const history = syncHistoryWithStore(browserHistory, configureStore)
 
 const Routes = (props) => (
     <Router history={history}>
-        <Route path="/" component={AppComponent}>
+        <Route path="/" component={Main}>
             <IndexRoute component={Home} />
+            <Route path="home" component={Home} />
             <Route path="foo" component={Foo} />
             <Route path="bar" component={Bar} />
             <Route path="menu" component={Menu} />

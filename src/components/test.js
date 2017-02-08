@@ -1,8 +1,9 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
+import { Link, browserHistory } from 'react-router'
+
 import Panel from '../containers/Panel';
 import Button from './Button'
-import Main from './layouts/main'
 
 export default class Menu extends Component {
     // static propTypes = {}
@@ -14,7 +15,9 @@ export default class Menu extends Component {
         return (
             <div>
                 <h1>Test</h1>
-                <Panel />
+                <div>
+                    <Panel />
+                </div>
                 <div style={{ background: 'antiquewhite' }}>
                     <img src={require("../assets/images/lOL8wD5.png")} alt="qq"
                         style={{ "height": "120px" }}></img>
@@ -24,7 +27,7 @@ export default class Menu extends Component {
                     block={false}>
                     Cool Button!
                 </Button>
-                <Main qq="00000" tt="Ray"/>
+                <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
             </div>
         );
     }
