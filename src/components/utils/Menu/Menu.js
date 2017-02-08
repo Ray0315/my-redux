@@ -68,7 +68,6 @@ export default class Menu extends Component {
                             <li><Link to="/home"><i className="fa fa-circle-o"></i> Home</Link></li>
                             <li><Link to="/foo"><i className="fa fa-circle-o"></i> Foo</Link></li>
                             <li><Link to="/bar"><i className="fa fa-circle-o"></i> Bar</Link></li>
-                            <li><Link to="/menu"><i className="fa fa-circle-o"></i> Menu</Link></li>
                             <li><Link to="/test"><i className="fa fa-circle-o"></i> Test</Link></li>
                             <li><Link to="/ajax"><i className="fa fa-circle-o"></i> Ajax</Link></li>
                             <li><Link to="/userInfo"><i className="fa fa-circle-o"></i> UserInfo</Link></li>
