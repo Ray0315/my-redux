@@ -1,6 +1,6 @@
 // src/components/About/index.js
 import React, { Component } from 'react';
-import CallApiContainer from '../containers/callApiContainer'
+import CallApiContainer from '../../containers/callApiContainer'
 
 export default class Ajax extends Component {
     // static propTypes = {}
