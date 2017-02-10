@@ -28,6 +28,7 @@ export default class Menu extends Component {
                     Cool Button!
                 </Button>
                 <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
+                <Link to={{ pathname: '/bar', query: { name: 'Ray0315', id: 80121 } }}>1111</Link>
             </div>
         );
     }

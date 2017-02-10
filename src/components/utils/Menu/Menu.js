@@ -71,6 +71,7 @@ export default class Menu extends Component {
                             <li><Link to="/test"><i className="fa fa-circle-o"></i> Test</Link></li>
                             <li><Link to="/ajax"><i className="fa fa-circle-o"></i> Ajax</Link></li>
                             <li><Link to="/userInfo"><i className="fa fa-circle-o"></i> UserInfo</Link></li>
+                            <li><Link to="/paginate"><i className="fa fa-circle-o"></i> Paginate</Link></li>
                         </ul>
                     </li>
                     <li className="treeview">
