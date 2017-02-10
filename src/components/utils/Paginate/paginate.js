@@ -7,17 +7,40 @@ import $ from 'jquery';
 
 export class CommentList extends Component {
     render() {
-        console.log(this.props.data);
-        // let commentNodes = this.props.data.map(function (comment, index) {
-        //     return (
-        //         <div key={index}>{comment.comment}</div>
-        //     );
-        // });
+        let offset = this.props.offset;
+        let limit = this.props.limit;
+        
+        const Requirement = (page, limit) => {
+            if (page === 1) {
+                return { min: 0, max: limit }
+            } else {
+                return { min: ((page - 1) * limit), max: page * limit }
+            }
+        }
+        let check = Requirement(offset,limit)
+
+        // console.log(this.props.offset);
+        // console.log(this.props.limit);
+        // console.log(this.props.data);
+
+
+        let temp = this.props.data.filter(
+            (obj, i) => {
+                if ((i >= check.min) && (i < check.max))
+                    return true
+            }
+        )
+
+        let commentNodes = temp.map(function (val, index) {
+            return (
+                <div key={index}>{val.id}</div>
+            );
+        });
 
         return (
             <div id="project-comments" className="commentList">
                 <ul>
-                    1111
+                    {commentNodes}
                 </ul>
             </div>
         );
@@ -30,19 +53,18 @@ export default class Paginate extends Component {
 
         this.state = {
             data: [],
-            offset: 0
+            offset: 1
         }
     }
 
     loadCommentsFromServer() {
         $.ajax({
             url: this.props.url,
-            data: { limit: this.props.perPage, offset: this.state.offset },
             dataType: 'json',
             type: 'GET',
 
-            success: data => {
-                this.setState({ data: data.comments, pageCount: Math.ceil(data.length / 10) });
+            success: info => {
+                this.setState({ data: info, pageCount: 5 });
             },
 
             error: (xhr, status, err) => {
@@ -56,26 +78,22 @@ export default class Paginate extends Component {
     }
 
     handlePageClick = (data) => {
-        let selected = data.selected;
-        let offset = Math.ceil(selected * this.props.perPage);
-
-        this.setState({ offset: offset }, () => {
-            this.loadCommentsFromServer();
-        });
+        let selected = data.selected + 1;
+        let offset = selected;
+        this.setState({ offset: offset });
     };
 
     render() {
         return (
             <div className="commentBox">
-                <label>{JSON.stringify(this.state.data)}</label>
-                <CommentList data={this.state.data} />
+                <CommentList data={this.state.data} offset={this.state.offset} limit={this.props.perPage} />
                 <ReactPaginate previousLabel={"previous"}
                     nextLabel={"next"}
-                    breakLabel={<a href="#">...</a>}
+                    breakLabel={<a href="">...</a>}
                     breakClassName={"break-me"}
                     pageCount={this.state.pageCount}
                     marginPagesDisplayed={2}
-                    pageRangeDisplayed={2}
+                    pageRangeDisplayed={5}
                     onPageChange={this.handlePageClick}
                     containerClassName={"pagination"}
                     subContainerClassName={"pages pagination"}

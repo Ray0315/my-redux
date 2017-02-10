@@ -66,12 +66,15 @@ export default class Menu extends Component {
                         </a>
                         <ul className="treeview-menu">
                             <li><Link to="/home"><i className="fa fa-circle-o"></i> Home</Link></li>
-                            <li><Link to="/foo"><i className="fa fa-circle-o"></i> Foo</Link></li>
+                            <li><Link to="/foo/ray/0315"><i className="fa fa-circle-o"></i> Foo</Link></li>
                             <li><Link to="/bar"><i className="fa fa-circle-o"></i> Bar</Link></li>
                             <li><Link to="/test"><i className="fa fa-circle-o"></i> Test</Link></li>
                             <li><Link to="/ajax"><i className="fa fa-circle-o"></i> Ajax</Link></li>
                             <li><Link to="/userInfo"><i className="fa fa-circle-o"></i> UserInfo</Link></li>
                             <li><Link to="/paginate"><i className="fa fa-circle-o"></i> Paginate</Link></li>
+                            <li><Link to="/showTable"><i className="fa fa-circle-o"></i> ShowTable</Link></li>
+
+                            
                         </ul>
                     </li>
                     <li className="treeview">
