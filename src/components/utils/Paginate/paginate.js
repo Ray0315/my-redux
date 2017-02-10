@@ -64,7 +64,7 @@ export default class Paginate extends Component {
             type: 'GET',
 
             success: info => {
-                this.setState({ data: info, pageCount: 5 });
+                this.setState({ data: info, pageCount: info.length /  this.props.perPage});
             },
 
             error: (xhr, status, err) => {
