@@ -7,6 +7,9 @@ import { AppComponent, Home, Foo, Bar, Test, Ajax, TestPaginate, ShowTable } fro
 import Main from './components/layouts/main'
 import UserInfo from './containers/UserInfo';
 
+import TestLayout from './components/layouts/test/test-layout'
+import Button from './components/utils/Button/button'
+
 const history = syncHistoryWithStore(browserHistory, configureStore)
 
 const Routes = (props) => (
@@ -21,6 +24,10 @@ const Routes = (props) => (
             <Route path="userInfo" component={UserInfo} />
             <Route path="showTable" component={ShowTable} />
             <Route path="paginate" component={TestPaginate} />
+        </Route>
+        <Route path="/testlayout" component={TestLayout}>
+            <IndexRoute component={Button} />
+            <Route path="home" component={Home} />
         </Route>
     </Router>
 );

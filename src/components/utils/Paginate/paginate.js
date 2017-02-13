@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router'
 import ReactPaginate from 'react-paginate';
 import $ from 'jquery';
+import Table from '../Table/table'
 
 
 export class CommentList extends Component {
@@ -33,7 +34,7 @@ export class CommentList extends Component {
 
         let commentNodes = temp.map(function (val, index) {
             return (
-                <div key={index}>{val.id}</div>
+                <div key={index}>{val.month}</div>
             );
         });
 
@@ -86,10 +87,10 @@ export default class Paginate extends Component {
     render() {
         return (
             <div className="commentBox">
-                <CommentList data={this.state.data} offset={this.state.offset} limit={this.props.perPage} />
+                <Table data={this.state.data} offset={this.state.offset} limit={this.props.perPage} />            
                 <ReactPaginate previousLabel={"previous"}
                     nextLabel={"next"}
-                    breakLabel={<a href="">...</a>}
+                    breakLabel={<a href="#">...</a>}
                     breakClassName={"break-me"}
                     pageCount={this.state.pageCount}
                     marginPagesDisplayed={2}
