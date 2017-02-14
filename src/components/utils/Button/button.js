@@ -56,13 +56,13 @@ export default class TableExampleComplex extends React.Component {
     this.state = {
       fixedHeader: true,
       fixedFooter: true,
-      stripedRows: false,
-      showRowHover: false,
+      stripedRows: true,
+      showRowHover: true,
       selectable: true,
       multiSelectable: false,
       enableSelectAll: false,
-      deselectOnClickaway: true,
-      showCheckboxes: true,
+      deselectOnClickaway: false,
+      showCheckboxes: false,
       height: '300px',
     };
   }
@@ -111,9 +111,9 @@ export default class TableExampleComplex extends React.Component {
           >
             {tableData.map( (row, index) => (
               <TableRow key={index} selected={row.selected}>
-                <TableRowColumn style={{color:'black'}}>{index}</TableRowColumn>
-                <TableRowColumn style={{color:'black'}}>{row.name}</TableRowColumn>
-                <TableRowColumn style={{color:'black'}}>{row.status}</TableRowColumn>
+                <TableRowColumn>{index}</TableRowColumn>
+                <TableRowColumn>{row.name}</TableRowColumn>
+                <TableRowColumn>{row.status}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>

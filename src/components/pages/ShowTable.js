@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Paginate from '../utils/Paginate/paginate'
 import Table from '../utils/Table/table'
-import MyAwesomeReactComponent from '../utils/Button/button'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -19,7 +18,9 @@ class ShowTable extends Component {
         return (
             <div>
                 <MuiThemeProvider>
-                    <MyAwesomeReactComponent />
+                    <Paginate url={'https://jsonbin.org/ray0315/test'}
+                        author={'adele'}
+                        perPage={3} />
                 </MuiThemeProvider>
             </div>
         )

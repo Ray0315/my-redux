@@ -10,7 +10,7 @@ export class CommentList extends Component {
     render() {
         let offset = this.props.offset;
         let limit = this.props.limit;
-        
+
         const Requirement = (page, limit) => {
             if (page === 1) {
                 return { min: 0, max: limit }
@@ -18,7 +18,7 @@ export class CommentList extends Component {
                 return { min: ((page - 1) * limit), max: page * limit }
             }
         }
-        let check = Requirement(offset,limit)
+        let check = Requirement(offset, limit)
 
         // console.log(this.props.offset);
         // console.log(this.props.limit);
@@ -54,6 +54,7 @@ export default class Paginate extends Component {
 
         this.state = {
             data: [],
+            nowData: [],
             offset: 1
         }
     }
@@ -65,13 +66,40 @@ export default class Paginate extends Component {
             type: 'GET',
 
             success: info => {
-                this.setState({ data: info, pageCount: info.length /  this.props.perPage});
+                this.setState({ data: info, pageCount: info.length / this.props.perPage });
+                this.filterDate();
             },
 
             error: (xhr, status, err) => {
                 console.error(this.props.url, status, err.toString());
             }
         });
+    }
+
+    filterDate() {
+        let offset = this.state.offset;
+        let limit = this.props.perPage;
+
+        const Requirement = (page, limit) => {
+            if (page === 1) {
+                return { min: 0, max: limit }
+            } else {
+                return { min: ((page - 1) * limit), max: page * limit }
+            }
+        }
+        let check = Requirement(offset, limit)
+
+
+        let temp = this.state.data.filter(
+            (obj, i) => {
+                if ((i >= check.min) && (i < check.max))
+                    return true
+            }
+        )
+
+        this.setState({ nowData: temp });
+        console.log('temp');
+        console.log(temp);
     }
 
     componentDidMount() {
@@ -81,13 +109,18 @@ export default class Paginate extends Component {
     handlePageClick = (data) => {
         let selected = data.selected + 1;
         let offset = selected;
-        this.setState({ offset: offset });
+
+        this.setState(
+            { offset: offset },
+            () => {
+                this.filterDate();
+            });
     };
 
     render() {
         return (
             <div className="commentBox">
-                <Table data={this.state.data} offset={this.state.offset} limit={this.props.perPage} />            
+                <Table data={this.state.nowData} />
                 <ReactPaginate previousLabel={"previous"}
                     nextLabel={"next"}
                     breakLabel={<a href="#">...</a>}

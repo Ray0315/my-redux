@@ -1,73 +1,112 @@
-// src/components/About/index.js
-import React, { Component } from 'react';
-import { Link, browserHistory } from 'react-router'
-import './table.css'
+import React from "react";
+import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
+  from "material-ui/Table";
+import TextField from "material-ui/TextField";
+import Toggle from "material-ui/Toggle";
 
-export default class Paginate extends Component {
-    constructor(props) {
-        super(props);
-    }
+const styles = {
+  propContainer: {
+    width: 200,
+    overflow: "hidden",
+    margin: "20px auto 0",
+  },
+  propToggleHeader: {
+    margin: "20px auto 10px",
+  },
+};
 
+export default class TableExampleComplex extends React.Component {
 
-    render() {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      fixedHeader: true,
+      fixedFooter: true,
+      stripedRows: true,
+      showRowHover: true,
+      selectable: true,
+      multiSelectable: false,
+      enableSelectAll: false,
+      deselectOnClickaway: false,
+      showCheckboxes: false,
+      height: "auto",
+      tableData:[]
+    };
+  }
 
-        let offset = this.props.offset;
-        let limit = this.props.limit;
+  componentWillReceiveProps(props){
+    console.log('props')
+    console.log(props)
+    this.state.tableData = props.data;
+  }
 
-        const Requirement = (page, limit) => {
-            if (page === 1) {
-                return { min: 0, max: limit }
-            } else {
-                return { min: ((page - 1) * limit), max: page * limit }
-            }
-        }
-        let check = Requirement(offset, limit)
+  handleToggle = (event, toggled) => {
+    this.setState({
+      [event.target.name]: toggled,
+    });
+  };
 
+  handleChange = (event) => {
+    this.setState({height: event.target.value});
+  };
 
-        let temp = this.props.data.filter(
-            (obj, i) => {
-                if ((i >= check.min) && (i < check.max))
-                    return true
-            }
-        )
-        // <div key={index}>{val.month}</div>
-
-        let commentNodes = temp.map(function (val, index) {
-            return (
-                <tr key={index}>
-                    <td >{val.month}</td>
-                    <td >{val.Sales}</td>
-                    <td >{val.money}</td>
-                </tr>
-            );
-        });
-
-        return (
-            <div className="set-width">
-                <section>
-                    <h1>Fixed Table header</h1>
-                    <div className="tbl-header">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                            <thead>
-                                <tr>
-                                    <th>Month</th>
-                                    <th>Salary</th>
-                                    <th>Money</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div className="tbl-content">
-                        <table cellpadding="0" cellspacing="0" border="0">
-                            <tbody>
-                                {commentNodes}
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Table
+          height={this.state.height}
+          fixedHeader={this.state.fixedHeader}
+          fixedFooter={this.state.fixedFooter}
+          selectable={this.state.selectable}
+          multiSelectable={this.state.multiSelectable}
+        >
+          <TableHeader
+            displaySelectAll={this.state.showCheckboxes}
+            adjustForCheckbox={this.state.showCheckboxes}
+            enableSelectAll={this.state.enableSelectAll}
+          >
+            <TableRow>
+              <TableHeaderColumn colSpan="3" tooltip="Super Header" style={{textAlign: "center"}}>
+                Super Header
+              </TableHeaderColumn>
+            </TableRow>
+            <TableRow>
+              <TableHeaderColumn tooltip="The ID">ID</TableHeaderColumn>
+              <TableHeaderColumn tooltip="The Name">Name</TableHeaderColumn>
+              <TableHeaderColumn tooltip="The Status">Status</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody
+            displayRowCheckbox={this.state.showCheckboxes}
+            deselectOnClickaway={this.state.deselectOnClickaway}
+            showRowHover={this.state.showRowHover}
+            stripedRows={this.state.stripedRows}
+          >
+            {this.state.tableData.map( (row, index) => (
+              <TableRow key={index} selected={row.selected}>
+                <TableRowColumn>{index}</TableRowColumn>
+                <TableRowColumn>{row.name}</TableRowColumn>
+                <TableRowColumn>{row.status}</TableRowColumn>
+              </TableRow>
+              ))}
+          </TableBody>
+          <TableFooter
+            adjustForCheckbox={this.state.showCheckboxes}
+          >
+            <TableRow>
+              <TableRowColumn>ID</TableRowColumn>
+              <TableRowColumn>Name</TableRowColumn>
+              <TableRowColumn>Status</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn colSpan="3" style={{textAlign: "center"}}>
+                Super Footer
+              </TableRowColumn>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
+    );
+  }
 }
-
