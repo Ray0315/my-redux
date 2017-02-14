@@ -73,8 +73,7 @@ export default class Menu extends Component {
                             <li><Link to="/userInfo"><i className="fa fa-circle-o"></i> UserInfo</Link></li>
                             <li><Link to="/paginate"><i className="fa fa-circle-o"></i> Paginate</Link></li>
                             <li><Link to="/showTable"><i className="fa fa-circle-o"></i> ShowTable</Link></li>
-
-                            
+                            <li><Link to="/material"><i className="fa fa-circle-o"></i> Material</Link></li>
                         </ul>
                     </li>
                     <li className="treeview">

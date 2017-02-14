@@ -20,7 +20,7 @@ class ShowTable extends Component {
                 <MuiThemeProvider>
                     <Paginate url={'https://jsonbin.org/ray0315/test'}
                         author={'adele'}
-                        perPage={3} />
+                        perPage={5} />
                 </MuiThemeProvider>
             </div>
         )

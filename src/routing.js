@@ -3,7 +3,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './store/configureStore'
-import { AppComponent, Home, Foo, Bar, Test, Ajax, TestPaginate, ShowTable } from './components'
+import { AppComponent, Home, Foo, Bar, Test, Ajax, TestPaginate, ShowTable, Material } from './components'
 import Main from './components/layouts/main'
 import UserInfo from './containers/UserInfo';
 
@@ -23,6 +23,7 @@ const Routes = (props) => (
             <Route path="ajax" component={Ajax} />
             <Route path="userInfo" component={UserInfo} />
             <Route path="showTable" component={ShowTable} />
+            <Route path="material" component={Material} />
             <Route path="paginate" component={TestPaginate} />
         </Route>
         <Route path="/testlayout" component={TestLayout}>
